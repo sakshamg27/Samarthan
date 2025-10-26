@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Install Flutter 3.35.7
-curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.35.7-stable.tar.xz | tar -xJ -C /tmp
+# Install Flutter from GitHub (stable branch)
+git clone https://github.com/flutter/flutter.git -b stable /tmp/flutter
 export PATH="/tmp/flutter/bin:$PATH"
 
 # Install dependencies
