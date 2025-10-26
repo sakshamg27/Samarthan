@@ -1,10 +1,14 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/models.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://localhost:8000/api';
+  // Use environment-based URL for production deployment
+  static const String baseUrl = kDebugMode 
+    ? 'http://localhost:8000/api'
+    : 'https://your-backend-url.vercel.app/api';
   
   static Future<Map<String, String>> _getHeaders() async {
     final prefs = await SharedPreferences.getInstance();
