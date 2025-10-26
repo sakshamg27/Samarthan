@@ -60,7 +60,9 @@ class Expense {
       dueDate: json['dueDate'] != null ? DateTime.parse(json['dueDate']) : null,
       paidDate: json['paidDate'] != null ? DateTime.parse(json['paidDate']) : null,
       isPaid: json['isPaid'] ?? false,
-      createdAt: DateTime.parse(json['createdAt']),
+      createdAt: json['createdAt'] != null 
+          ? DateTime.parse(json['createdAt']) 
+          : DateTime.now(),
     );
   }
 
@@ -100,7 +102,9 @@ class Savings {
       amount: (json['amount'] ?? 0).toDouble(),
       type: json['type'] ?? 'manual',
       description: json['description'],
-      createdAt: DateTime.parse(json['createdAt']),
+      createdAt: json['createdAt'] != null 
+          ? DateTime.parse(json['createdAt']) 
+          : DateTime.now(),
     );
   }
 
