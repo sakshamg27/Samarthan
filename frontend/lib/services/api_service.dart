@@ -88,7 +88,7 @@ class ApiService {
 
     final handledResponse = await _handleResponse(response);
     final data = json.decode(handledResponse.body);
-    return Expense.fromJson(data['expense']);
+    return Expense.fromJson(data);
   }
 
   static Future<Expense> markExpenseAsPaid(String expenseId) async {
@@ -145,7 +145,7 @@ class ApiService {
 
     final handledResponse = await _handleResponse(response);
     final data = json.decode(handledResponse.body);
-    return Savings.fromJson(data['savings']);
+    return Savings.fromJson(data);
   }
 
   static Future<List<Savings>> getSavings() async {
