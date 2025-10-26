@@ -4,20 +4,14 @@ FROM node:18-alpine
 # Set working directory
 WORKDIR /app
 
-# Copy root package.json
-COPY package.json ./
-
 # Copy backend package files
-COPY backend/package*.json ./backend/
-
-# Install root dependencies (if any)
-RUN npm install
+COPY backend/package*.json ./
 
 # Install backend dependencies
-RUN cd backend && npm install
+RUN npm install
 
 # Copy backend source code
-COPY backend/ ./backend/
+COPY backend/ ./
 
 # Expose port
 EXPOSE 8000
@@ -26,5 +20,5 @@ EXPOSE 8000
 ENV PORT=8000
 ENV NODE_ENV=production
 
-# Start the backend server
-CMD ["npm", "start"]
+# Start the backend server directly
+CMD ["node", "server.js"]
