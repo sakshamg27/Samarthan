@@ -1,0 +1,11 @@
+# Railway deployment configuration
+# This file tells Railway how to deploy your app
+
+[build]
+  builder = "dockerfile"
+
+[deploy]
+  startCommand = "docker-compose up"
+  healthcheckPath = "/api/health"
+  healthcheckTimeout = 300
+  restartPolicyType = "on_failure"

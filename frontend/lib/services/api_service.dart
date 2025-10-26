@@ -8,7 +8,7 @@ class ApiService {
   // Use environment-based URL for production deployment
   static const String baseUrl = kDebugMode 
     ? 'http://localhost:8000/api'
-    : 'https://your-backend-url.vercel.app/api';
+    : '/api';  // Same domain for single-platform deployment
   
   static Future<Map<String, String>> _getHeaders() async {
     final prefs = await SharedPreferences.getInstance();
