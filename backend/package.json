@@ -1,0 +1,38 @@
+{
+  "name": "samarthan-api",
+  "version": "1.0.0",
+  "description": "Samarthan Family Finance OS - Backend API (Code-Only Storage)",
+  "main": "server_production.js",
+  "scripts": {
+    "start": "node server_production.js",
+    "dev": "nodemon server_production.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "finance",
+    "family",
+    "expense-tracker",
+    "savings",
+    "credit-score",
+    "api",
+    "in-memory",
+    "code-only"
+  ],
+  "author": "Samarthan Team",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.29.4",
+    "google-auth-library": "^9.15.1",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
