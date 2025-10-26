@@ -1,15 +1,6 @@
 # Samarthan Frontend
 
-## 🌐 Production-Ready Flutter Web App
-
 This is the frontend Flutter web application for Samarthan Family Finance OS.
-
-## 📦 What's Included
-
-- ✅ **lib/** - Flutter source code
-- ✅ **web/** - Web configuration files
-- ✅ **pubspec.yaml** - Flutter dependencies
-- ✅ **pubspec.lock** - Dependency lock file
 
 ## 🚀 Quick Start
 
@@ -48,23 +39,6 @@ static const String baseUrl = 'https://your-backend-url.onrender.com/api';
 - ✅ **Analytics** - Monthly reports and insights
 - ✅ **Notifications** - Bill reminders and tips
 - ✅ **Bilingual UI** - English and Hindi support
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Connect GitHub repository
-2. Set framework: Other
-3. Set root directory: `frontend`
-4. Set build command: `flutter build web --release`
-5. Set output directory: `build/web`
-6. Deploy!
-
-### Environment Variables
-```
-API_BASE_URL=https://your-backend-url.onrender.com/api
-```
-
-**Total Monthly Cost: $0** (Free tier)
 
 ## 🎨 UI Features
 
