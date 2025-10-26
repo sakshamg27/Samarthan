@@ -13,7 +13,13 @@ const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Production-ready middleware
 app.use(cors({
-  origin: true, // Allow all origins for now
+  origin: process.env.NODE_ENV === 'production' 
+    ? [
+        'https://samarthan-sykz.vercel.app',
+        'https://samarthan-sykz.vercel.app/',
+        'http://localhost:3000' // For local development
+      ] 
+    : true,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
