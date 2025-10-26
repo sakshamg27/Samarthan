@@ -8,7 +8,7 @@ class ApiService {
   // Use environment-based URL for production deployment
   static const String baseUrl = kDebugMode 
     ? 'http://localhost:8000/api'
-    : '/api';  // Same domain for single-platform deployment
+    : 'https://samarthan-production.up.railway.app/api';
   
   static Future<Map<String, String>> _getHeaders() async {
     final prefs = await SharedPreferences.getInstance();
