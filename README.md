@@ -4,18 +4,30 @@ A comprehensive family finance management application built with Flutter (fronte
 
 ## 🚀 Railway Deployment
 
-This app is configured for deployment on Railway.
+This app needs to be deployed as **two separate services** on Railway.
 
-### Quick Deploy
-
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/deploy)
-
-### Manual Deploy
+### Step 1: Deploy Backend Service
 
 1. Go to [Railway](https://railway.app)
-2. Connect your GitHub account
-3. Select this repository
-4. Railway will automatically detect and deploy both services
+2. Click **"New Project"** → **"Deploy from GitHub repo"**
+3. Select **`sakshamg27/Samarthan`**
+4. Railway will detect it's a Node.js app
+5. Set **Root Directory** to: `backend`
+6. Railway will automatically deploy your API server
+
+### Step 2: Deploy Frontend Service
+
+1. In Railway dashboard, click **"New Service"**
+2. Select **"Deploy from GitHub repo"**
+3. Select the same repository: **`sakshamg27/Samarthan`**
+4. Set **Root Directory** to: `frontend`
+5. Railway will build and deploy your Flutter web app
+
+### Step 3: Configure Frontend API URL
+
+1. Get your backend URL from Railway (e.g., `https://backend-production-xxxx.railway.app`)
+2. Update the frontend API service to use this URL
+3. Redeploy the frontend service
 
 ### Architecture
 
