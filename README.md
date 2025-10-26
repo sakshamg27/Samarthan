@@ -4,30 +4,28 @@ A comprehensive family finance management application built with Flutter (fronte
 
 ## 🚀 Railway Deployment
 
-This app needs to be deployed as **two separate services** on Railway.
-
-### Step 1: Deploy Backend Service
+### Quick Deploy (Backend Only)
 
 1. Go to [Railway](https://railway.app)
 2. Click **"New Project"** → **"Deploy from GitHub repo"**
 3. Select **`sakshamg27/Samarthan`**
-4. Railway will detect it's a Node.js app
-5. Set **Root Directory** to: `backend`
-6. Railway will automatically deploy your API server
+4. Railway will detect it's a Node.js app (from root package.json)
+5. Railway will automatically deploy your backend API server
+6. Your API will be available at: `https://your-app.railway.app/api`
 
-### Step 2: Deploy Frontend Service
+### Frontend Deployment Options
 
-1. In Railway dashboard, click **"New Service"**
-2. Select **"Deploy from GitHub repo"**
-3. Select the same repository: **`sakshamg27/Samarthan`**
-4. Set **Root Directory** to: `frontend`
-5. Railway will build and deploy your Flutter web app
+**Option A: GitHub Pages (Recommended)**
+1. Go to your GitHub repo settings
+2. Enable GitHub Pages
+3. Set source to "GitHub Actions"
+4. Push to main branch to trigger deployment
 
-### Step 3: Configure Frontend API URL
-
-1. Get your backend URL from Railway (e.g., `https://backend-production-xxxx.railway.app`)
-2. Update the frontend API service to use this URL
-3. Redeploy the frontend service
+**Option B: Netlify**
+1. Go to [Netlify](https://netlify.com)
+2. Connect your GitHub repo
+3. Set build command: `cd frontend && flutter build web --release`
+4. Set publish directory: `frontend/build/web`
 
 ### Architecture
 
