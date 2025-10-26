@@ -2,23 +2,25 @@
 
 A comprehensive family finance management application built with Flutter (frontend) and Node.js (backend).
 
-## 🚀 Railway Deployment
+## 🚀 Vercel Deployment
 
 ### Quick Deploy
 
-1. Go to [Railway](https://railway.app)
-2. Click **"New Project"** → **"Deploy from GitHub repo"**
-3. Select **`sakshamg27/Samarthan`**
-4. Railway will automatically detect the Dockerfile and deploy your backend API
-5. Your API will be available at: `https://your-app.railway.app/api`
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/sakshamg27/Samarthan)
+
+### Manual Deploy
+
+1. Go to [Vercel](https://vercel.com)
+2. Click **"New Project"**
+3. Import from GitHub: **`sakshamg27/Samarthan`**
+4. Vercel will automatically detect Flutter and deploy your frontend
+5. Your app will be available at: `https://your-app.vercel.app`
 
 ### What Gets Deployed
 
-- ✅ **Backend API Server** (Node.js/Express)
-- ✅ **All API endpoints** (`/api/*`)
-- ✅ **Google OAuth authentication**
-- ✅ **In-memory data storage**
-- ✅ **Health check endpoint** (`/api/health`)
+- ✅ **Frontend**: Flutter Web App (deployed to Vercel)
+- ✅ **Backend**: Node.js API Server (deployed to Railway)
+- ✅ **Full Stack**: Complete application with API integration
 
 ### Frontend Development
 
