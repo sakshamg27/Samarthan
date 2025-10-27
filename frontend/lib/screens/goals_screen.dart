@@ -15,7 +15,7 @@ class GoalsScreen extends StatefulWidget {
 
 class _GoalsScreenState extends State<GoalsScreen> with WidgetsBindingObserver {
   List<Savings> _savings = [];
-  SamarthanScore? _samarthanScore;
+  DashboardData? _dashboardData;
   bool _isLoading = true;
   double _monthlySavingsGoal = 1500.0; // Made configurable
   final double _scoreGoal = 1000.0; // Maximum possible score
@@ -81,15 +81,20 @@ class _GoalsScreenState extends State<GoalsScreen> with WidgetsBindingObserver {
 
       // Load other data with better error handling
       try {
-        final savings = await ApiService.getSavings();
-        final samarthanScore = await ApiService.getSamarthanScore();
+        final dashboardData = await ApiService.getDashboardData();
+        final allSavings = await ApiService.getSavings();
         
         if (mounted) {
           setState(() {
-            _savings = savings;
-            _samarthanScore = samarthanScore;
+            _dashboardData = dashboardData;
+            _savings = allSavings; // Use all savings for monthly calculation
             _isLoading = false;
           });
+          
+          // Debug: Print current data
+          print('Goals Screen - Samarthan Score: ${dashboardData.samarthanScore}');
+          print('Goals Screen - Monthly Savings: ${_getMonthlySavings()}');
+          print('Goals Screen - Total Savings Count: ${allSavings.length}');
           
           // Notify parent about data changes
           if (widget.onDataChanged != null) {
@@ -124,8 +129,8 @@ class _GoalsScreenState extends State<GoalsScreen> with WidgetsBindingObserver {
   }
 
   double _getScoreProgress() {
-    if (_samarthanScore == null) return 0.0;
-    return (_samarthanScore!.score / _scoreGoal * 100).clamp(0.0, 100.0);
+    if (_dashboardData == null) return 0.0;
+    return (_dashboardData!.samarthanScore / _scoreGoal * 100).clamp(0.0, 100.0);
   }
 
   void _showSetSavingsGoalDialog() {
@@ -408,7 +413,7 @@ class _GoalsScreenState extends State<GoalsScreen> with WidgetsBindingObserver {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '${_samarthanScore?.score ?? 0}',
+                              '${_dashboardData?.samarthanScore ?? 0}',
                               style: const TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.bold,
