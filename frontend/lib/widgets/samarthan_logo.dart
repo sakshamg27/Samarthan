@@ -32,7 +32,7 @@ class SamarthanLogo extends StatelessWidget {
             borderRadius: BorderRadius.circular(size * 0.3),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF2E7D32).withOpacity(0.3),
+                color: const Color(0xFF2E7D32).withValues(alpha: 0.3),
                 blurRadius: 8,
                 offset: const Offset(0, 4),
               ),
@@ -63,7 +63,7 @@ class SamarthanLogo extends StatelessWidget {
                 style: TextStyle(
                   fontSize: size * 0.35,
                   fontWeight: FontWeight.w500,
-                  color: color?.withOpacity(0.7) ?? Colors.black54,
+                  color: color?.withValues(alpha: 0.7) ?? Colors.black54,
                 ),
               ),
             ],

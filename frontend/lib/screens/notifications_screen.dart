@@ -10,7 +10,6 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  List<Expense> _expenses = [];
   List<Map<String, dynamic>> _notifications = [];
   bool _isLoading = true;
 
@@ -166,7 +165,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
                     leading: CircleAvatar(
-                      backgroundColor: notification['color'].withOpacity(0.1),
+                      backgroundColor: notification['color'].withValues(alpha: 0.1),
                       child: Icon(
                         notification['icon'],
                         color: notification['color'],

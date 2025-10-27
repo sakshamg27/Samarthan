@@ -52,8 +52,6 @@ class AuthService {
       // Extract user data from Google response
       final String? googleId = googleUser['sub'];
       final String? email = googleUser['email'];
-      final String? name = googleUser['name'];
-      final String? picture = googleUser['picture'];
       
       if (googleId == null || email == null) {
         print('Missing required user data - googleId: $googleId, email: $email');

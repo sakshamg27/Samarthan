@@ -15,7 +15,6 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
   List<Expense> _expenses = [];
   bool _isLoading = true;
   bool _isLoadingMore = false;
-  int _currentPage = 1;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   final ScrollController _scrollController = ScrollController();
@@ -175,7 +174,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.red.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.warning, color: Colors.red),
@@ -296,7 +295,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.blue.withOpacity(0.1),
+                  color: Colors.blue.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(Icons.add, color: Colors.blue),
@@ -493,7 +492,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF667EEA).withOpacity(0.3),
+                  color: const Color(0xFF667EEA).withValues(alpha: 0.3),
                   blurRadius: 15,
                   offset: const Offset(0, 8),
                 ),
@@ -507,7 +506,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Icon(
@@ -552,7 +551,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
                     if (_expenses.isNotEmpty)
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: PopupMenuButton<String>(
@@ -582,7 +581,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
                     const SizedBox(width: 8),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: IconButton(
@@ -611,7 +610,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
                                 borderRadius: BorderRadius.circular(20),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
+                                    color: Colors.black.withValues(alpha: 0.1),
                                     blurRadius: 20,
                                     offset: const Offset(0, 10),
                                   ),
@@ -683,10 +682,10 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
                                     padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
                                       color: expense.isPaid
-                                          ? Colors.green.withOpacity(0.1)
+                                          ? Colors.green.withValues(alpha: 0.1)
                                           : isOverdue
-                                              ? Colors.red.withOpacity(0.1)
-                                              : Colors.orange.withOpacity(0.1),
+                                              ? Colors.red.withValues(alpha: 0.1)
+                                              : Colors.orange.withValues(alpha: 0.1),
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                     child: Icon(
@@ -796,7 +795,7 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
                                               child: Container(
                                                 padding: const EdgeInsets.all(4),
                                                 decoration: BoxDecoration(
-                                                  color: Colors.grey.withOpacity(0.1),
+                                                  color: Colors.grey.withValues(alpha: 0.1),
                                                   borderRadius: BorderRadius.circular(4),
                                                 ),
                                                 child: const Icon(Icons.more_vert, size: 12),

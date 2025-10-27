@@ -15,7 +15,6 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
   List<Savings> _savings = [];
   bool _isLoading = true;
   bool _isLoadingMore = false;
-  int _currentPage = 1;
   double _totalSavings = 0;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
@@ -181,7 +180,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.1),
+                color: Colors.red.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.warning, color: Colors.red),
@@ -282,7 +281,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.green.withOpacity(0.1),
+                color: Colors.green.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.savings, color: Colors.green),
@@ -409,7 +408,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF11998E).withOpacity(0.3),
+                  color: const Color(0xFF11998E).withValues(alpha: 0.3),
                   blurRadius: 15,
                   offset: const Offset(0, 8),
                 ),
@@ -423,7 +422,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                     Container(
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: const Icon(
@@ -468,7 +467,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                     if (_savings.isNotEmpty)
                       Container(
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: PopupMenuButton<String>(
@@ -498,7 +497,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                     const SizedBox(width: 8),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: Colors.white.withValues(alpha: 0.2),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: IconButton(
@@ -536,7 +535,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
+                              color: Colors.black.withValues(alpha: 0.2),
                               blurRadius: 20,
                               offset: const Offset(0, 10),
                             ),
@@ -547,7 +546,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                             Container(
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.2),
+                                color: Colors.white.withValues(alpha: 0.2),
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: const Icon(
@@ -673,7 +672,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                                 borderRadius: BorderRadius.circular(16),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.05),
+                                    color: Colors.black.withValues(alpha: 0.05),
                                     blurRadius: 10,
                                     offset: const Offset(0, 5),
                                   ),
@@ -725,7 +724,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                                       leading: Container(
                                         padding: const EdgeInsets.all(12),
                                         decoration: BoxDecoration(
-                                          color: Colors.green.withOpacity(0.1),
+                                          color: Colors.green.withValues(alpha: 0.1),
                                           borderRadius: BorderRadius.circular(12),
                                         ),
                                         child: const Icon(
@@ -745,7 +744,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                                           Container(
                                             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                             decoration: BoxDecoration(
-                                              color: Colors.blue.withOpacity(0.1),
+                                              color: Colors.blue.withValues(alpha: 0.1),
                                               borderRadius: BorderRadius.circular(8),
                                             ),
                                             child: Text(
@@ -812,7 +811,7 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
                                             child: Container(
                                               padding: const EdgeInsets.all(8),
                                               decoration: BoxDecoration(
-                                                color: Colors.grey.withOpacity(0.1),
+                                                color: Colors.grey.withValues(alpha: 0.1),
                                                 borderRadius: BorderRadius.circular(8),
                                               ),
                                               child: const Icon(Icons.more_vert, size: 16),
@@ -853,9 +852,9 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.1),
+          color: color.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(0.3)),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
         ),
         child: Column(
           children: [
