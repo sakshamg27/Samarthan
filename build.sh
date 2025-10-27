@@ -4,18 +4,23 @@ set -e  # Exit on any error
 
 echo "Starting Flutter build process..."
 
-# Install Flutter SDK
+# Install Flutter SDK using git clone (more reliable for Vercel)
 echo "Installing Flutter SDK..."
 cd /tmp
-curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.24.5-stable.tar.xz | tar -xJ
+git clone https://github.com/flutter/flutter.git -b stable flutter
 export PATH="/tmp/flutter/bin:$PATH"
 
 # Verify Flutter installation
 echo "Verifying Flutter installation..."
 flutter --version
+flutter doctor
 
 # Navigate to frontend directory
 cd /vercel/path0/frontend
+
+# Clean any existing build
+echo "Cleaning previous builds..."
+flutter clean
 
 # Install dependencies
 echo "Installing Flutter dependencies..."
