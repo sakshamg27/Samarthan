@@ -708,7 +708,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeInOut,
-                    transform: Matrix4.identity()..scale(isHovered ? 1.05 : 1.0, isHovered ? 1.05 : 1.0, 1.0),
+                    transform: Matrix4.identity()..scaleByDouble(isHovered ? 1.05 : 1.0),
             child: GestureDetector(
               onTap: onTap,
               child: Container(
@@ -739,7 +739,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                       curve: Curves.easeInOut,
                       padding: EdgeInsets.all(isHovered ? 16 : 12),
                       decoration: BoxDecoration(
-                        color: color.withOpacity(alpha: isHovered ? 0.15 : 0.1),
+                        color: color.withOpacity(isHovered ? 0.15 : 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: AnimatedScale(
