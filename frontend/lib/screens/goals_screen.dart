@@ -91,11 +91,6 @@ class _GoalsScreenState extends State<GoalsScreen> with WidgetsBindingObserver {
             _isLoading = false;
           });
           
-          // Debug: Print current data
-          print('Goals Screen - Samarthan Score: ${dashboardData.samarthanScore}');
-          print('Goals Screen - Monthly Savings: ${_getMonthlySavings()}');
-          print('Goals Screen - Total Savings Count: ${allSavings.length}');
-          
           // Notify parent about data changes
           if (widget.onDataChanged != null) {
             widget.onDataChanged!();

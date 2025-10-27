@@ -169,17 +169,8 @@ class ApiService {
     await _handleResponse(response);
   }
 
-  // Score endpoint
-  static Future<SamarthanScore> getSamarthanScore() async {
-    final response = await http.get(
-      Uri.parse('$baseUrl/score'),
-      headers: await _getHeaders(),
-    );
-
-    final handledResponse = await _handleResponse(response);
-    final data = json.decode(handledResponse.body);
-    return SamarthanScore.fromJson(data);
-  }
+  // Note: Samarthan score is now fetched via getDashboardData() endpoint
+  // The separate /api/score endpoint was returning 404 errors
 
   // Analytics endpoint
   static Future<Map<String, dynamic>> getAnalytics() async {
