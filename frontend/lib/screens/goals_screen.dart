@@ -5,13 +5,15 @@ import '../services/api_service.dart';
 import '../models/models.dart';
 
 class GoalsScreen extends StatefulWidget {
-  const GoalsScreen({super.key});
+  final VoidCallback? onDataChanged;
+  
+  const GoalsScreen({super.key, this.onDataChanged});
 
   @override
   State<GoalsScreen> createState() => _GoalsScreenState();
 }
 
-class _GoalsScreenState extends State<GoalsScreen> {
+class _GoalsScreenState extends State<GoalsScreen> with WidgetsBindingObserver {
   List<Savings> _savings = [];
   SamarthanScore? _samarthanScore;
   bool _isLoading = true;
@@ -21,10 +23,35 @@ class _GoalsScreenState extends State<GoalsScreen> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _loadData();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // Refresh data when app becomes active
+    if (state == AppLifecycleState.resumed) {
+      _loadData();
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Refresh data when screen becomes visible
     _loadData();
   }
 
   Future<void> _loadData() async {
+    if (!mounted) return;
+    
     try {
       // Load saved monthly savings goal first
       try {
@@ -32,18 +59,24 @@ class _GoalsScreenState extends State<GoalsScreen> {
         final savedGoal = prefs.getDouble('samarthan_monthly_savings_goal');
         
         if (savedGoal != null && savedGoal > 0) {
-          setState(() {
-            _monthlySavingsGoal = savedGoal;
-          });
+          if (mounted) {
+            setState(() {
+              _monthlySavingsGoal = savedGoal;
+            });
+          }
         } else {
+          if (mounted) {
+            setState(() {
+              _monthlySavingsGoal = 1500.0; // Default value
+            });
+          }
+        }
+      } catch (prefsError) {
+        if (mounted) {
           setState(() {
             _monthlySavingsGoal = 1500.0; // Default value
           });
         }
-      } catch (prefsError) {
-        setState(() {
-          _monthlySavingsGoal = 1500.0; // Default value
-        });
       }
 
       // Load other data with better error handling
@@ -51,20 +84,31 @@ class _GoalsScreenState extends State<GoalsScreen> {
         final savings = await ApiService.getSavings();
         final samarthanScore = await ApiService.getSamarthanScore();
         
-        setState(() {
-          _savings = savings;
-          _samarthanScore = samarthanScore;
-          _isLoading = false;
-        });
+        if (mounted) {
+          setState(() {
+            _savings = savings;
+            _samarthanScore = samarthanScore;
+            _isLoading = false;
+          });
+          
+          // Notify parent about data changes
+          if (widget.onDataChanged != null) {
+            widget.onDataChanged!();
+          }
+        }
       } catch (apiError) {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      }
+    } catch (e) {
+      if (mounted) {
         setState(() {
           _isLoading = false;
         });
       }
-    } catch (e) {
-      setState(() {
-        _isLoading = false;
-      });
     }
   }
 
@@ -246,8 +290,11 @@ class _GoalsScreenState extends State<GoalsScreen> {
           ),
           // Main content
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
+            child: RefreshIndicator(
+              onRefresh: _loadData,
+              child: SingleChildScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.all(16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -459,6 +506,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                 ],
               ),
             ),
+            ),
           ),
         ],
       ),
@@ -545,16 +593,22 @@ class _GoalsScreenState extends State<GoalsScreen> {
               try {
                 await ApiService.addSavings(amount: double.parse(amountController.text));
                 Navigator.pop(context);
-                _loadData();
+                await _loadData(); // Wait for data to reload
                 if (mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Savings added successfully!')),
+                    const SnackBar(
+                      content: Text('Savings added successfully!'),
+                      backgroundColor: Colors.green,
+                    ),
                   );
                 }
               } catch (e) {
                 if (mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Error: ${e.toString()}')),
+                    SnackBar(
+                      content: Text('Error: ${e.toString()}'),
+                      backgroundColor: Colors.red,
+                    ),
                   );
                 }
               }
@@ -698,7 +752,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
         
         // Close dialog and refresh data
         Navigator.pop(context);
-        _loadData();
+        await _loadData(); // Wait for data to reload
       }
     } catch (e) {
       if (mounted) {

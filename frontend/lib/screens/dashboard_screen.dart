@@ -133,7 +133,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
       case 3:
         return const AnalyticsScreen();
       case 4:
-        return const GoalsScreen();
+        return GoalsScreen(onDataChanged: _loadDashboardData);
       default:
         return _buildDashboard();
     }
