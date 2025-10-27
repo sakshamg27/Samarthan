@@ -15,6 +15,8 @@ class GoogleSignInWeb {
       // Uncomment below for real Google OAuth:
       // return await _realGoogleSignIn();
     } catch (e) {
+      // Log the error for debugging
+      print('Google Sign-In Error: $e');
       // Google Sign-In error - handle silently in production
       return null;
     }

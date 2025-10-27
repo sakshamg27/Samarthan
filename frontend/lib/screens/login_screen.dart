@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
+import '../services/api_service.dart';
 import '../widgets/samarthan_logo.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -27,8 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Google Sign-In failed or cancelled'),
+              content: Text('Login failed. Please try again or check browser compatibility.'),
               backgroundColor: Colors.red,
+              duration: Duration(seconds: 5),
             ),
           );
         }
@@ -39,6 +41,39 @@ class _LoginScreenState extends State<LoginScreen> {
           SnackBar(
             content: Text('Error: ${e.toString()}'),
             backgroundColor: Colors.red,
+            duration: const Duration(seconds: 5),
+          ),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
+
+  Future<void> _handleFallbackLogin() async {
+    setState(() => _isLoading = true);
+
+    try {
+      // Direct fallback login without Google Sign-In
+      final response = await ApiService.googleSignIn(idToken: 'demo_user_123');
+      final token = response['token'];
+      final userData = response['user'];
+      
+      final user = User.fromJson(userData);
+      await _authService.saveAuthData(token, user);
+      
+      if (mounted) {
+        Navigator.of(context).pushReplacementNamed('/dashboard');
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Fallback login failed: ${e.toString()}'),
+            backgroundColor: Colors.red,
+            duration: const Duration(seconds: 5),
           ),
         );
       }
@@ -198,6 +233,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+              
+              const SizedBox(height: 16),
+              
+              // Fallback Login Button
+              Container(
+                height: 48,
+                child: TextButton(
+                  onPressed: _isLoading ? null : _handleFallbackLogin,
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white70,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(color: Colors.white.withValues(alpha: 0.3)),
+                    ),
+                  ),
+                  child: Text(
+                    'Having trouble? Try Direct Login',
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
