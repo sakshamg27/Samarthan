@@ -739,7 +739,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                       curve: Curves.easeInOut,
                       padding: EdgeInsets.all(isHovered ? 16 : 12),
                       decoration: BoxDecoration(
-                        color: color.withOpacity(isHovered ? 0.15 : 0.1),
+                        color: color.withValues(alpha: isHovered ? 0.15 : 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: AnimatedScale(

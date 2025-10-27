@@ -48,7 +48,6 @@ class _GoalsScreenState extends State<GoalsScreen> {
 
       // Load other data with better error handling
       try {
-        final expenses = await ApiService.getExpenses();
         final savings = await ApiService.getSavings();
         final samarthanScore = await ApiService.getSamarthanScore();
         
