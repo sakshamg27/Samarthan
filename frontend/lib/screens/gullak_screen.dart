@@ -58,7 +58,6 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
     try {
       setState(() {
         _isLoading = true;
-        _currentPage = 1;
       });
       
       final savings = await ApiService.getSavings();
@@ -98,7 +97,6 @@ class _GullakScreenState extends State<GullakScreen> with TickerProviderStateMix
       
       setState(() {
         _isLoadingMore = false;
-        _currentPage++;
       });
     } catch (e) {
       setState(() {

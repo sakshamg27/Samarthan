@@ -17,7 +17,6 @@ class _GoalsScreenState extends State<GoalsScreen> {
   bool _isLoading = true;
   double _monthlySavingsGoal = 1500.0; // Made configurable
   final double _scoreGoal = 1000.0; // Maximum possible score
-  final double _billsOnTimeGoal = 90.0;
 
   @override
   void initState() {
@@ -54,7 +53,6 @@ class _GoalsScreenState extends State<GoalsScreen> {
         final samarthanScore = await ApiService.getSamarthanScore();
         
         setState(() {
-          _expenses = expenses;
           _savings = savings;
           _samarthanScore = samarthanScore;
           _isLoading = false;

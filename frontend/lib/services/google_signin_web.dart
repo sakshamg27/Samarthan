@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'dart:async';
 
 class GoogleSignInWeb {
-  static const String _clientId = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
   
   static Future<Map<String, dynamic>?> signIn() async {
     try {

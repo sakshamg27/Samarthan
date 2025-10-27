@@ -23,7 +23,6 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     try {
       final expenses = await ApiService.getExpenses();
       setState(() {
-        _expenses = expenses;
         _notifications = _generateNotifications(expenses);
         _isLoading = false;
       });

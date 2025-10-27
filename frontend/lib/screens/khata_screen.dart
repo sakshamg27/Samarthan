@@ -53,7 +53,6 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
     try {
       setState(() {
         _isLoading = true;
-        _currentPage = 1;
       });
       
       final expenses = await ApiService.getExpenses();
@@ -92,7 +91,6 @@ class _KhataScreenState extends State<KhataScreen> with TickerProviderStateMixin
       
       setState(() {
         _isLoadingMore = false;
-        _currentPage++;
       });
     } catch (e) {
       setState(() {
