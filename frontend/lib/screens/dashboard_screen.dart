@@ -227,13 +227,13 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.1),
+                    color: Colors.grey.withOpacity(0.1),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
                 ],
                 border: Border.all(
-                  color: Colors.grey.withValues(alpha: 0.1),
+                  color: Colors.grey.withOpacity(0.1),
                   width: 1,
                 ),
               ),
@@ -245,7 +245,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withValues(alpha: 0.1),
+                          color: Colors.blue.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Icon(
@@ -312,13 +312,13 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withValues(alpha: 0.1),
+                    color: Colors.grey.withOpacity(0.1),
                     blurRadius: 20,
                     offset: const Offset(0, 8),
                   ),
                 ],
                 border: Border.all(
-                  color: Colors.grey.withValues(alpha: 0.1),
+                  color: Colors.grey.withOpacity(0.1),
                   width: 1,
                 ),
               ),
@@ -356,7 +356,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                           vertical: 8,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.green.withValues(alpha: 0.1),
+                          color: Colors.green.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Text(
@@ -434,10 +434,10 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: Colors.grey.withValues(alpha: 0.05),
+                color: Colors.grey.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: Colors.grey.withValues(alpha: 0.1),
+                  color: Colors.grey.withOpacity(0.1),
                   width: 1,
                 ),
               ),
@@ -446,7 +446,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                   Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: Colors.blue.withValues(alpha: 0.1),
+                      color: Colors.blue.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: const Icon(
@@ -509,10 +509,10 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               decoration: BoxDecoration(
-                color: Colors.grey.withValues(alpha: 0.05),
+                color: Colors.grey.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: Colors.grey.withValues(alpha: 0.1),
+                  color: Colors.grey.withOpacity(0.1),
                   width: 1,
                 ),
               ),
@@ -521,7 +521,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                   Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: Colors.green.withValues(alpha: 0.1),
+                      color: Colors.green.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: const Icon(
@@ -560,7 +560,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
+                      color: Colors.black.withOpacity(0.05),
                       blurRadius: 5,
                       offset: const Offset(0, 2),
                     ),
@@ -605,7 +605,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.05),
+                      color: Colors.black.withOpacity(0.05),
                       blurRadius: 5,
                       offset: const Offset(0, 2),
                     ),
@@ -718,15 +718,15 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                   borderRadius: BorderRadius.circular(16),
                   border: Border.all(
                     color: isHovered 
-                        ? color.withValues(alpha: 0.3)
-                        : Colors.grey.withValues(alpha: 0.1),
+                        ? color.withOpacity(0.3)
+                        : Colors.grey.withOpacity(0.1),
                     width: isHovered ? 2 : 1,
                   ),
                   boxShadow: [
                     BoxShadow(
                       color: isHovered 
-                          ? color.withValues(alpha: 0.2)
-                          : Colors.grey.withValues(alpha: 0.1),
+                          ? color.withOpacity(0.2)
+                          : Colors.grey.withOpacity(0.1),
                       blurRadius: isHovered ? 15 : 10,
                       offset: Offset(0, isHovered ? 8 : 4),
                     ),
@@ -739,7 +739,7 @@ class _DashboardScreenState extends State<DashboardScreen> with WidgetsBindingOb
                       curve: Curves.easeInOut,
                       padding: EdgeInsets.all(isHovered ? 16 : 12),
                       decoration: BoxDecoration(
-                        color: color.withValues(alpha: isHovered ? 0.15 : 0.1),
+                        color: color.withOpacity(alpha: isHovered ? 0.15 : 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: AnimatedScale(
