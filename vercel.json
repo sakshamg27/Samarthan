@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "git clone https://github.com/flutter/flutter.git -b stable /tmp/flutter && export PATH=\"/tmp/flutter/bin:$PATH\" && cd frontend && flutter pub get && flutter build web --release",
+  "buildCommand": "./build.sh",
   "outputDirectory": "frontend/build/web",
   "installCommand": "echo 'Installing Flutter during build...'"
 }
